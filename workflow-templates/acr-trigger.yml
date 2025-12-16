@@ -99,7 +99,7 @@ jobs:
           encoded_creator_email="${creator_email// /%20}"
           encoded_creator_login="${CREATOR_LOGIN// /%20}"
 
-          backend_url='https://10.98.0.97/api/review/git-pr/'
+          backend_url='https://enterprise-it-apps.everi.com/api/review/git-pr/'
           echo "Sending PR details to backend at: $backend_url"
 
           # Send POST request with form data to backend
@@ -146,7 +146,7 @@ jobs:
           echo "$reviewers" > "$artifact_dir/all_reviewers.txt"
 
           echo "Saved artifacts: run_id.txt, creator.txt, all_reviewers.txt"
-          echo "Review URL: https://10.98.0.97/#/pr-review/$run_id/"
+          echo "Review URL: https://enterprise-it-apps.everi.com/#/pr-review/$run_id/"
 
           echo "run_id=$run_id" >> $GITHUB_OUTPUT
           echo "artifactDir=$artifact_dir" >> $GITHUB_OUTPUT
@@ -169,7 +169,7 @@ jobs:
             const creator = creatorRaw && creatorRaw !== 'null' ? creatorRaw : 'Unknown';
             
             const runId = '${{ steps.backend_call_unix.outputs.run_id }}';
-            const reviewUrl = `https://10.98.0.97/#/pr-review/${runId}/`;
+            const reviewUrl = `https://enterprise-it-apps.everi.com/#/pr-review/${runId}/`;
             const prNumber = context.payload.pull_request.number;
             const repo = context.repo.repo;
       
@@ -298,7 +298,7 @@ jobs:
           $encoded_creator_email = $creator_email -replace ' ', '%20'
           $encoded_creator_login = $env:CREATOR_LOGIN -replace ' ', '%20'
           
-          $backend_url = 'https://10.98.0.97/api/review/git-pr/'
+          $backend_url = 'https://enterprise-it-apps.everi.com/api/review/git-pr/'
           Write-Host ("Sending PR details to backend at: {0}" -f $backend_url)
       
           # ---- Build proper multipart/form-data body with boundary (text-only parts) ----
@@ -396,7 +396,7 @@ jobs:
           }
           
           Write-Host "Saved artifacts: run_id.txt, creator.txt, all_reviewers.txt"
-          Write-Host ("Review URL: https://10.98.0.97/#/pr-review/{0}/" -f $run_id)
+          Write-Host ("Review URL: https://enterprise-it-apps.everi.com/#/pr-review/{0}/" -f $run_id)
           
           # Export outputs to GitHub Actions
           Add-Content -Path $env:GITHUB_OUTPUT -Value ("run_id={0}" -f $run_id)
@@ -430,7 +430,7 @@ jobs:
           $creator = if ($creatorRaw -and $creatorRaw -ne 'null') { $creatorRaw } else { 'Unknown' }
           
           $runId = '${{ steps.backend_call_windows.outputs.run_id }}'
-          $reviewUrl = ("https://10.98.0.97/#/pr-review/{0}/" -f $runId)
+          $reviewUrl = ("https://enterprise-it-apps.everi.com/#/pr-review/{0}/" -f $runId)
           $prNumber = $env:PR_NUMBER
           $parts = $env:GITHUB_REPOSITORY.Split('/')
           $owner = $parts[0]
